@@ -30,8 +30,8 @@ app.post('/send', (req, res) => {
     let transporter = nodemailer.createTransport({
         service: "Gmail",
         auth: {
-            user: 'yanuwarishak@gmail.com', // email yang digunakan untuk mengirim
-            pass: 'NdDiYFw:):(?' // password email yang digunakan untuk mengirim
+            user: 'myshop.mailer@gmail.com', // email yang digunakan untuk mengirim
+            pass: 'witeljogja' // password email yang digunakan untuk mengirim
         },
         tls:{
             rejectUnauthorized:false
@@ -64,7 +64,7 @@ app.post('/send', (req, res) => {
         let pdfData = Buffer.concat(buffers);
         //Send the Email
         const mailOptions = {
-            from: '"Yanuwar Ishak" <yanuwarishak@gmail.com>', // sender address
+            from: '"Myshop Witel Jogja" <myshop.mailer@gmail.com>', // sender address
             to: "croucell@gmail.com", // list of receivers
             subject: "Hasil Penilaian", // Subject line
             html: output, // html body
