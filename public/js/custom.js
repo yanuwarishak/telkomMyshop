@@ -24,45 +24,39 @@ window.onscroll = function () {
     }, 500);
   });
 
-//Count total in form function
+//Count total and submit in form function
 $(document).ready(function () {
-  
-  // Buat Testing
-  // $('form').submit(function(e) {
-  //   e.preventDefault();
-  // });
 
     $("input[value='Submit']").click(function () {
+      
+      //Fungsi untuk mencari aspek yang belum terpenuhi (tidak) nambahi div
+      var radios = $('input[type="radio"]:checked').filter(function() {
+        return this.value == 50;
+        });
+        for (var i = 0; i < radios.length; i++) {
+          console.log(radios[i].parentNode.firstElementChild.innerText);
+        }
+      
       //Get value of checked radio button
       var values = $('input[type="radio"]:checked').map(function () {
         return this.value;
-      }).get();
-      //convert string array into number array
-      values = values.map(Number);
-      //function to count total value of radio button
-      function getSum(total, num) {
-        return total + num;
-      }
+        }).get();
 
-      //Fungsi untuk mencari aspek yang belum terpenuhi (tidak) nambahi div
-      // var radios = $('input[type="radio"]:checked').filter(function() {
-      //   return this.value == 50;
-      // });
-      // for (var i = 0; i < radios.length; i++) {
-      //   console.log(radios[i].parentNode.firstElementChild.innerText);
-      // }
+        //convert string array into number array
+        values = values.map(Number);
+        //function to count total value of radio button
+        function getSum(total, num) {
+          return total + num;
+        }
 
-      //variabel to show result of counted array
-      var total = values.reduce(getSum);
-      var total = total/values.length;
-      //console result
-      //console.log(values);
-      //console.log(total);
-      confirm("Apakah penilaian yang dimasukkan sudah benar?");
+        //variabel to show result of counted array
+        var total = values.reduce(getSum);
+        var total = total/values.length;
 
-      //Input hasil penilaian ke backend
-      var input = document.getElementById('hasilAssesment');
-      input.value = total.toString();
+        //Input hasil penilaian ke backend
+        var inputHasil = document.getElementById('hasilAssesment');
+        inputHasil.value = total.toString();
+        console.log(inputHasil.value);
 
     });
   });
