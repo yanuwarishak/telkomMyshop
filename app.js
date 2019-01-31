@@ -49,36 +49,6 @@ app.post('/send', (req, res) => {
 
     //Buat isi konten email
     const kontenEmail = `
-    <p> Berikut merupakan hasil dari simulasi mystery shopper </p>
-    <h3> Penilaian dilakukan oleh: </h3>
-    <ul>
-        <li>Nama: ${namapengisi} </li>
-        <li>Pada Tanggal: ${tanggalisi}</li>
-    </ul>
-    <h3> Pelanggan dilayani oleh: </h3>
-    <ul>
-        <li>Nama CSR Stationaire: ${namacsrs}</li>
-        <li>Nama CSR Mobile: ${namacsrm}</li>
-    </ul>
-    <h3>Nilai indeks mystery shopper:</h3>
-    <h2>${nilaiTotal}</h2>
-    <h3>Catatan tambahan penilai:</h3>
-    <p>${catatanPenilai}</p>
-    `;
-    
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        service: "Gmail",
-        auth: {
-            user: 'myshop.mailer@gmail.com', // email yang digunakan untuk mengirim
-            pass: 'witeljogja' // password email yang digunakan untuk mengirim
-        },
-        tls:{
-            rejectUnauthorized:false
-        }
-    });
-
-    const output = `
     <table align="center" cellpadding="0" cellspacing="0" width="600">
     <tr>
         <td align="center" bgcolor="#ff071a" style="padding: 20px 0 5px 0;">
@@ -124,6 +94,18 @@ app.post('/send', (req, res) => {
     </tr>
     </table>
     `;
+    
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: 'myshop.mailer@gmail.com', // email yang digunakan untuk mengirim
+            pass: 'witeljogja' // password email yang digunakan untuk mengirim
+        },
+        tls:{
+            rejectUnauthorized:false
+        }
+    });
 
     //Persiapan awal membentuk pdf bro
     let doc = new pdfkit();
