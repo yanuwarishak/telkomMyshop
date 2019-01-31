@@ -24,13 +24,14 @@ $('.panel-collapse').on('shown.bs.collapse', function (e) {
   }, 500);
 });
 
-//Count total and submit in form function
+//Kirim data dari form frontend
 $(document).ready(function () {
   // Klik submit gak ngesubmit default biar dia pakai submit ajax bukan form
   $("form").submit(function (event) {
     event.preventDefault();
   });
 
+  //Sehingga submit nya pakai fungsi ini yang dieksekusi ketika button Submit di click
   $("input[value='Submit']").click(function () {
 
     //Get value of checked radio button
@@ -52,7 +53,6 @@ $(document).ready(function () {
     //Input hasil penilaian ke backend
     var inputHasil = document.getElementById('hasilAssesment');
     inputHasil.value = total.toString();
-    console.log(inputHasil.value);
 
     // Deklarasi array yang valuenya "50"
     let arrayOfNo = [];
@@ -60,31 +60,31 @@ $(document).ready(function () {
     var radiosOfNo = $('input[type="radio"]:checked').filter(function () {
       return this.value == 50;
     });
-    // Masukkan judul yang valuenya "50" ke arrayOfNo
+    // Masukkan judul atau nilai firstElementChild yaitu <p> yang valuenya "50" ke arrayOfNo
     for (var i = 0; i < radiosOfNo.length; i++) {
       arrayOfNo.push(radiosOfNo[i].parentNode.firstElementChild.innerText);
     }
-    // Ambil content dari form 
+    // Ambil semua konten yang ada dalam form dalam bentuk array
     let formContent = $('form').serializeArray();
-    // Masukkan content dari form dan array yang nilainya "50" untuk dikirim lewat ajax
+    // Masukkan content dari form dan array semuanya dan yang nilainya "50" untuk dikirim lewat ajax
     let dataJson = { 'formContent': formContent, 'arrayOfNo': arrayOfNo };
     // Confirmation alert
     let isConfirmed = confirm('Apakah form yang diisikan sudah benar?');
-    if (isConfirmed) { // Kalau yes
-      // Kirim ke url "/send" pake method "POST", data string json yang sudah didapatkan
-      // contentType "application/json"
-      $.ajax({
-        url: '/send',
-        method: 'POST',
-        data: JSON.stringify(dataJson),
-        contentType: 'application/json',
-        dataType: 'json'
-      }).done(function(data) {
-        // setelah selesai (error atau sukses) selalu redirect ke "/"
-        window.location.href = '/';
-        alert("Data berhasil dikirim");
-      });
-    }
-
+      if (isConfirmed) { // Kalau yes
+        // Kirim ke url "/send" pake method "POST", data string json yang sudah didapatkan di stringify dulu
+        // contentType "application/json"
+        $.ajax({
+          url: '/send',
+          method: 'POST',
+          data: JSON.stringify(dataJson),
+          contentType: 'application/json',
+          dataType: 'json'
+        }).done(function(data) {
+            // setelah selesai (error atau sukses) selalu redirect ke "/"
+            window.location.href = '/';
+            alert("Data berhasil dikirim");
+          });
+      }
   });
+
 });
