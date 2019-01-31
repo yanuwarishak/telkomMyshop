@@ -78,7 +78,54 @@ app.post('/send', (req, res) => {
         }
     });
 
-    //Generate PDF
+    const output = `
+    <table align="center" cellpadding="0" cellspacing="0" width="600">
+    <tr>
+        <td align="center" bgcolor="#ff071a" style="padding: 20px 0 5px 0;">
+            <h1 style="color:white">Form Hasil Assesment Mystery Shopper</h1>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" bgcolor="#ffffff" style="padding: 20px 0 5px 0;">
+            <h3> Penilaian dilakukan oleh: </h3>
+            <ul>
+                Nama: ${namapengisi}
+                <hr>
+                Pada Tanggal: ${tanggalisi}
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" bgcolor="#ffffff">
+            <h3> Pelanggan dilayani oleh: </h3>
+            <ul>
+                Nama CSR Stationaire: ${namacsrs}
+                <hr>
+                Nama CSR Mobile: ${namacsrm}
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor = "#ffffff" >
+            <h3>Catatan tambahan :</h3>
+            <h5>${catatanPenilai}</h5>
+        </td>
+    </tr>
+    <tr>
+        <td bgcolor =#ffffff>
+            <h3>Poin yang masih belum terpenuhi : </h3>
+            <h4>${arrayOfNo}</h4>
+        </td>
+    </tr>
+    <tr>
+    <td align="center" bgcolor="#ff071a">
+        <h4 style="color:white";> &copy; Witel Yogyakarta </h4>
+    </td>
+    </tr>
+    </table>
+    `;
+
+    //Persiapan awal membentuk pdf bro
     let doc = new pdfkit();
     let buffers = [];
     doc.on('data', buffers.push.bind(buffers));
