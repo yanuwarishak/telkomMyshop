@@ -76,15 +76,15 @@ app.post('/send', (req, res) => {
         </td>
     </tr>
     <tr>
-        <td bgcolor = "#ffffff" >
-            <h3>Catatan tambahan :</h3>
-            <h5>${catatanPenilai}</h5>
+        <td bgcolor =#ffffff>
+            <h3>Hasil penilaian: </h3>
+            <h3>${nilaiTotal}</h3>
         </td>
     </tr>
     <tr>
-        <td bgcolor =#ffffff>
-            <h3>Poin yang masih belum terpenuhi : </h3>
-            <h4>${arrayOfNo}</h4>
+        <td bgcolor = "#ffffff" >
+            <h3>Catatan tambahan :</h3>
+            <h4>${catatanPenilai}</h5>
         </td>
     </tr>
     <tr>
@@ -139,20 +139,31 @@ app.post('/send', (req, res) => {
 
     //Proses pengisian buffer dengan data yang mau diisi
     //Add an image, constrain it to a given size, and center it vertically and horizontally
-    doc.image('public/logo_telkom.png', {
-        fit: [250, 250],
+
+    doc.fontSize(25).text('Hasil Evaluasi Mystery Shopper',{
         align: 'center'
         });
-    doc.moveDown();
-    // Input text di dalam pdf
-    doc.text('Lembar penilaian untuk mystery shopper sebagai bahan evaluasi Plasa Telkom Yogyakarta.',{
+        
+        doc.fontSize(20).text('Plasa Telkom Yogyakarta.',{
         align: 'center'
         });
-    doc.moveDown();
-    doc.text('Hasil penilaian adalah: '+nilaiTotal);
-    doc.moveDown();
-    doc.text('Penilaian dilakukan oleh: '+namapengisi);
-    doc.text('Penilaian dilakukan pada: '+tanggalisi);
+
+    doc.moveDown()
+        .fontSize(13)
+        .text('Lembar hasil penilaian dari proses pengamatan mystery shopper yang selanjutnya akan digunakan sebagai bahan evaluasi Plasa Telkom Yogyakarta.',{
+        align: 'left'
+        });
+
+    doc.moveDown()
+        .fontSize(12).text('Hasil penilaian adalah: ')
+        .fontSize(22).text(''+nilaiTotal);
+
+    doc.moveDown()
+        .fontSize(12).text('Penilaian dilakukan oleh: ')
+        .fontSize(18).text(''+namapengisi)
+        .fontSize(12).text('Penilaian dilakukan pada: ')
+        .fontSize(18).text(''+tanggalisi);
+
     doc.moveDown();
     doc.text('CSR Stationaire yang melayani pelanggan: '+namacsrs);
     doc.text('CSR Mobile yang melayani pelanggan: '+namacsrm);
@@ -172,8 +183,9 @@ app.post('/send', (req, res) => {
     }
 
     // doc.text('Catatan tambahan dari penilai: ');
-    doc.moveDown();
-    doc.text('Catatan tambahan dari penilai: '+catatanPenilai);
+    doc.moveDown()
+        .fontSize(18).text('Catatan tambahan dari penilai:') 
+        .fontSize(12).text(''+catatanPenilai);
 
     //Execute method end() setelah buffer pdf selesai diisi
     doc.end();
