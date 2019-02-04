@@ -195,4 +195,4 @@ app.post('/send', (req, res) => {
 
 //App start indicator, this mean that the app listen to PORT which is specified by the hosting provider or listening to 8080 when
 //using in localhost
-app.listen('port', process.env.PORT || 8080);
+app.listen(process.env.PORT || 8080);
