@@ -5,6 +5,7 @@
   "description": "Sending form to email",
   "main": "app.js",
   "scripts": {
+    "start": "app.js"
     "test": "mocha"
   },
   "author": "Yanuwar Ishak",
