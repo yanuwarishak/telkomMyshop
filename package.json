@@ -2,6 +2,9 @@
   "name": "formnodemailer",
   "version": "1.0.0",
   "description": "Sending form to email",
+  "engines": {
+    "node": "11.6.0" 
+  },
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
