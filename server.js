@@ -193,7 +193,8 @@ app.post('/send', (req, res) => {
     res.status(200).send({'message': 'Transmission sent!'});
 });
 
-//App start indicator
-app.listen(8080 ,() => {
+//App start indicator, this mean that the app listen to PORT which is specified by the hosting provider or listening to 8080 when
+//using in localhost
+app.listen('port', process.env.PORT || 8080 ,() => {
     console.log('Server started...');
 });
