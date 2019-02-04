@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars');
 const nodemailer = require('nodemailer');
 const path = require('path');
 const pdfkit = require('pdfkit');
-const PORT = process.env.PORT || 8080;
+const port = process.env.get-port || 8080;
 
 const app = express();
 
@@ -195,6 +195,4 @@ app.post('/send', (req, res) => {
 });
 
 //App start indicator
-app.listen(8080 ,() => {
-    console.log('Server started...');
-});
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
