@@ -164,9 +164,12 @@ app.post('/send', (req, res) => {
         .fontSize(12).text('Penilaian dilakukan pada: ')
         .fontSize(18).text(''+tanggalisi);
 
-    doc.moveDown();
-    doc.text('CSR Stationaire yang melayani pelanggan: '+namacsrs);
-    doc.text('CSR Mobile yang melayani pelanggan: '+namacsrm);
+    doc.moveDown()
+        .fontSize(12).text('CSR Stationaire yang melayani pelanggan: ')
+        .fontSize(18).text(''+namacsrs)
+        .fontSize(12).text('CSR Mobile yang melayani pelanggan: ')
+        .fontSize(18).text(''+namacsrm);
+    
     // Add another page
     doc.addPage()
     .fontSize(12)
