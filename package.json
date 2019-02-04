@@ -1,6 +1,7 @@
 {
   "name": "formnodemailer",
   "version": "1.0.0",
+  "private": true,
   "description": "Sending form to email",
   "main": "app.js",
   "scripts": {
