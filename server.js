@@ -194,7 +194,6 @@ app.post('/send', (req, res) => {
 });
 
 //App start indicator
-app.listen(3000 ,() => {
+app.listen(8080 ,() => {
     console.log('Server started...');
-    console.log('http://localhost:8080');
 });
