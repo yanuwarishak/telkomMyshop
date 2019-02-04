@@ -215,7 +215,8 @@ app.post('/send', (req, res) => {
 
     // doc.text('Catatan tambahan dari penilai: ');
     doc.moveDown()
-        .fontSize(14).text('Catatan tambahan dari penilai:') 
+        .fontSize(14).text('Catatan tambahan dari penilai:')
+        .moveDown()
         .fontSize(14).text(''+catatanPenilai);
 
     //Execute method end() setelah buffer pdf selesai diisi
