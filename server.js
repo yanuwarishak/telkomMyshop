@@ -139,6 +139,26 @@ app.post('/send', (req, res) => {
 
     //Proses pengisian buffer dengan data yang mau diisi
     //Add an image, constrain it to a given size, and center it vertically and horizontally
+    doc.image('public/logo_telkom.png',230,20,{scale: 0.25});
+
+    doc.lineCap('butt')
+        .moveTo(50, 210)
+        .lineTo(560, 210)
+        .lineWidth(2)
+        .stroke("red");
+
+    doc.lineCap('butt')
+        .moveTo(50, 700)
+        .lineTo(500, 700)
+        .lineWidth(8)
+        .stroke("red");
+
+    doc.moveDown();
+    doc.moveDown();
+    doc.moveDown();
+    doc.moveDown();
+    doc.moveDown();
+    doc.moveDown();
 
     doc.fontSize(25).text('Hasil Evaluasi Mystery Shopper',{
         align: 'center'
@@ -149,32 +169,40 @@ app.post('/send', (req, res) => {
         });
 
     doc.moveDown()
-        .fontSize(13)
+        .fontSize(14)
         .text('Lembar hasil penilaian dari proses pengamatan mystery shopper yang selanjutnya akan digunakan sebagai bahan evaluasi Plasa Telkom Yogyakarta.',{
-        align: 'left'
+        align: 'justify'
         });
+    
+    doc.moveDown();
+    doc.moveDown();
+    doc.moveDown()
+        .fontSize(18).text('Hasil penilaian adalah: ')
+        .fontSize(18).text(''+nilaiTotal);
 
     doc.moveDown()
-        .fontSize(12).text('Hasil penilaian adalah: ')
-        .fontSize(22).text(''+nilaiTotal);
+        .fontSize(14).text('Penilaian dilakukan oleh: ')
+        .fontSize(14).text(''+namapengisi)
+        .fontSize(14).text('Penilaian dilakukan pada: ')
+        .fontSize(14).text(''+tanggalisi);
 
     doc.moveDown()
-        .fontSize(12).text('Penilaian dilakukan oleh: ')
-        .fontSize(18).text(''+namapengisi)
-        .fontSize(12).text('Penilaian dilakukan pada: ')
-        .fontSize(18).text(''+tanggalisi);
-
-    doc.moveDown()
-        .fontSize(12).text('CSR Stationaire yang melayani pelanggan: ')
-        .fontSize(18).text(''+namacsrs)
-        .fontSize(12).text('CSR Mobile yang melayani pelanggan: ')
-        .fontSize(18).text(''+namacsrm);
+        .fontSize(14).text('CSR Stationaire yang melayani pelanggan: ')
+        .fontSize(14).text(''+namacsrs)
+        .fontSize(14).text('CSR Mobile yang melayani pelanggan: ')
+        .fontSize(14).text(''+namacsrm);
     
     // Add another page
     doc.addPage()
-    .fontSize(12)
+    .fontSize(14)
     .text('Poin Penilaian yang belum terpenuhi :', 100, 100)
     .moveDown();
+
+    doc.lineCap('butt')
+    .moveTo(50, 700)
+    .lineTo(500, 700)
+    .lineWidth(8)
+    .stroke("red");
 
     var nomer = [];
     for (var k = 1; k <= arrayOfNo.length; k++) {
@@ -187,8 +215,8 @@ app.post('/send', (req, res) => {
 
     // doc.text('Catatan tambahan dari penilai: ');
     doc.moveDown()
-        .fontSize(18).text('Catatan tambahan dari penilai:') 
-        .fontSize(12).text(''+catatanPenilai);
+        .fontSize(14).text('Catatan tambahan dari penilai:') 
+        .fontSize(14).text(''+catatanPenilai);
 
     //Execute method end() setelah buffer pdf selesai diisi
     doc.end();
