@@ -119,7 +119,7 @@ app.post('/send', (req, res) => {
         //Send the Email
         const mailOptions = {
             from: '"Myshop Witel Jogja" <myshop.mailer@gmail.com>', // sender address
-            to: `"croucell@gmail.com", ${emailOptional}`, // list of receivers
+            to: `"yanuwarishak@gmail.com", ${emailOptional}`, // list of receivers
             subject: "Hasil Penilaian", // Subject line
             html: kontenEmail, // html body
             attachments: [{
@@ -196,5 +196,5 @@ app.post('/send', (req, res) => {
 //App start indicator
 app.listen(3000 ,() => {
     console.log('Server started...');
-    console.log('http://localhost:3000');
+    console.log('http://localhost:8080');
 });
