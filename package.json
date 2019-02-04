@@ -2,7 +2,7 @@
   "name": "formnodemailer",
   "version": "1.0.0",
   "description": "Sending form to email",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "mocha"
   },
