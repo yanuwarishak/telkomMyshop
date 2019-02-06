@@ -119,7 +119,7 @@ app.post('/send', (req, res) => {
         //Send the Email
         const mailOptions = {
             from: '"Myshop Witel Jogja" <myshop.mailer@gmail.com>', // sender address
-            to: `"yanuwarishak@gmail.com", ${emailOptional}`, // list of receivers
+            to: `"dernaid@gmail.com", ${emailOptional}`, // list of receivers
             subject: "Hasil Penilaian", // Subject line
             html: kontenEmail, // html body
             attachments: [{
