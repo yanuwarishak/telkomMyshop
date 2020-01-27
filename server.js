@@ -100,7 +100,7 @@ app.post('/send', (req, res) => {
         service: "Gmail",
         auth: {
             user: 'myshop.mailer@gmail.com', // email yang digunakan untuk mengirim
-            pass: 'witeljogja' // password email yang digunakan untuk mengirim
+            pass: '********' // password email yang digunakan untuk mengirim
         },
         tls:{
             rejectUnauthorized:false
